@@ -41,7 +41,12 @@ const resources = {
         reqs: "Requirements:",
         photo1: "Recent color photograph",
         photo2: "White or light background",
-        photo3: "Face should cover 70-80% of the photo"
+        photo3: "Face should cover 70-80% of the photo",
+        idTitle: "Proof of Identity",
+        idLabel: "I have a valid Proof of Identity",
+        id1: "Aadhaar Card",
+        id2: "PAN Card",
+        id3: "Driving License"
       },
       access: {
         title: "Accessibility Rights",
@@ -120,7 +125,12 @@ const resources = {
         reqs: "आवश्यकताएं:",
         photo1: "हाल ही का रंगीन फोटो",
         photo2: "सफेद या हल्का बैकग्राउंड",
-        photo3: "चेहरा फोटो का 70-80% कवर होना चाहिए"
+        photo3: "चेहरा फोटो का 70-80% कवर होना चाहिए",
+        idTitle: "पहचान का प्रमाण",
+        idLabel: "मेरे पास पहचान का वैध प्रमाण है",
+        id1: "आधार कार्ड",
+        id2: "पैन कार्ड",
+        id3: "ड्राइविंग लाइसेंस"
       },
       access: {
         title: "पहुंच अधिकार",
@@ -199,7 +209,12 @@ const resources = {
         reqs: "आवश्यकता:",
         photo1: "अलीकडील रंगीत छायाचित्र",
         photo2: "पांढरी किंवा हलकी पार्श्वभूमी",
-        photo3: "चेहऱ्याने फोटोचा 70-80% भाग व्यापला पाहिजे"
+        photo3: "चेहऱ्याने फोटोचा 70-80% भाग व्यापला पाहिजे",
+        idTitle: "ओळखीचा पुरावा",
+        idLabel: "माझ्याकडे ओळखीचा वैध पुरावा आहे",
+        id1: "आधार कार्ड",
+        id2: "पॅन कार्ड",
+        id3: "ड्रायव्हिंग लायसन्स"
       },
       access: {
         title: "प्रवेशाचे अधिकार",

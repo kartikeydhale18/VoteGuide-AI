@@ -10,6 +10,7 @@ const DocumentRequirements = () => {
   const [hasDobProof, setHasDobProof] = useState(false);
   const [hasAddressProof, setHasAddressProof] = useState(false);
   const [hasPhoto, setHasPhoto] = useState(false);
+  const [hasIdentity, setHasIdentity] = useState(false);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -21,11 +22,13 @@ const DocumentRequirements = () => {
           setHasDobProof(data.documents.dob || false);
           setHasAddressProof(data.documents.address || false);
           setHasPhoto(data.documents.photo || false);
+          setHasIdentity(data.documents.identity || false);
         }
       } else {
         setHasDobProof(false);
         setHasAddressProof(false);
         setHasPhoto(false);
+        setHasIdentity(false);
       }
     });
     return () => unsubscribe();
@@ -33,7 +36,7 @@ const DocumentRequirements = () => {
 
   // Document DB save handled directly in onChange now
 
-  const isReady = hasDobProof && hasAddressProof && hasPhoto;
+  const isReady = hasDobProof && hasAddressProof && hasPhoto && hasIdentity;
 
   return (
     <div className="page fade-in">
@@ -61,7 +64,7 @@ const DocumentRequirements = () => {
           <h3>{t('docs.dobTitle')}</h3>
           <div style={{marginBottom: '1rem', padding: '0.75rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid var(--glass-border)'}}>
             <label style={{display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', fontWeight: 'bold', fontSize: '1.1rem'}}>
-              <input type="checkbox" checked={hasDobProof} onChange={(e) => { setHasDobProof(e.target.checked); if (user) saveDocumentProgress(user.uid, e.target.checked, hasAddressProof, hasPhoto); }} style={{transform: 'scale(1.5)', cursor: 'pointer'}} /> 
+              <input type="checkbox" checked={hasDobProof} onChange={(e) => { setHasDobProof(e.target.checked); if (user) saveDocumentProgress(user.uid, e.target.checked, hasAddressProof, hasPhoto, hasIdentity); }} style={{transform: 'scale(1.5)', cursor: 'pointer'}} /> 
               {t('docs.dobLabel')}
             </label>
           </div>
@@ -78,7 +81,7 @@ const DocumentRequirements = () => {
           <h3>{t('docs.addressTitle')}</h3>
           <div style={{marginBottom: '1rem', padding: '0.75rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid var(--glass-border)'}}>
             <label style={{display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', fontWeight: 'bold', fontSize: '1.1rem'}}>
-              <input type="checkbox" checked={hasAddressProof} onChange={(e) => { setHasAddressProof(e.target.checked); if (user) saveDocumentProgress(user.uid, hasDobProof, e.target.checked, hasPhoto); }} style={{transform: 'scale(1.5)', cursor: 'pointer'}} /> 
+              <input type="checkbox" checked={hasAddressProof} onChange={(e) => { setHasAddressProof(e.target.checked); if (user) saveDocumentProgress(user.uid, hasDobProof, e.target.checked, hasPhoto, hasIdentity); }} style={{transform: 'scale(1.5)', cursor: 'pointer'}} /> 
               {t('docs.addressLabel')}
             </label>
           </div>
@@ -95,7 +98,7 @@ const DocumentRequirements = () => {
           <h3>{t('docs.photoTitle')}</h3>
           <div style={{marginBottom: '1rem', padding: '0.75rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid var(--glass-border)'}}>
             <label style={{display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', fontWeight: 'bold', fontSize: '1.1rem'}}>
-              <input type="checkbox" checked={hasPhoto} onChange={(e) => { setHasPhoto(e.target.checked); if (user) saveDocumentProgress(user.uid, hasDobProof, hasAddressProof, e.target.checked); }} style={{transform: 'scale(1.5)', cursor: 'pointer'}} /> 
+              <input type="checkbox" checked={hasPhoto} onChange={(e) => { setHasPhoto(e.target.checked); if (user) saveDocumentProgress(user.uid, hasDobProof, hasAddressProof, e.target.checked, hasIdentity); }} style={{transform: 'scale(1.5)', cursor: 'pointer'}} /> 
               {t('docs.photoLabel')}
             </label>
           </div>
@@ -104,6 +107,22 @@ const DocumentRequirements = () => {
             <li>{t('docs.photo1')}</li>
             <li>{t('docs.photo2')}</li>
             <li>{t('docs.photo3')}</li>
+          </ul>
+        </div>
+
+        <div className="card glassmorphism">
+          <h3>{t('docs.idTitle')}</h3>
+          <div style={{marginBottom: '1rem', padding: '0.75rem', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', border: '1px solid var(--glass-border)'}}>
+            <label style={{display: 'flex', alignItems: 'center', gap: '0.75rem', cursor: 'pointer', fontWeight: 'bold', fontSize: '1.1rem'}}>
+              <input type="checkbox" checked={hasIdentity} onChange={(e) => { setHasIdentity(e.target.checked); if (user) saveDocumentProgress(user.uid, hasDobProof, hasAddressProof, hasPhoto, e.target.checked); }} style={{transform: 'scale(1.5)', cursor: 'pointer'}} /> 
+              {t('docs.idLabel')}
+            </label>
+          </div>
+          <p style={{fontSize: '0.9rem', marginBottom: '0.5rem', opacity: 0.8}}>{t('docs.accDocs')}</p>
+          <ul style={{opacity: 0.8}}>
+            <li>{t('docs.id1')}</li>
+            <li>{t('docs.id2')}</li>
+            <li>{t('docs.id3')}</li>
           </ul>
         </div>
       </div>

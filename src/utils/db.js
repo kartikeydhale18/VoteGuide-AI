@@ -9,8 +9,8 @@ export const loadUserProgress = async (userId) => {
       return docSnap.data();
     } else {
       // Initialize new user document
-      const initialData = { completedPhases: [], documents: { dob: false, address: false, photo: false } };
-      await setDoc(docRef, initialData);
+      const initialData = { completedPhases: [], documents: { dob: false, address: false, photo: false, identity: false } };
+      await setDoc(docRef, initialData, { merge: true });
       return initialData;
     }
   } catch (error) {
@@ -22,20 +22,21 @@ export const loadUserProgress = async (userId) => {
 export const saveTimelineProgress = async (userId, completedPhases) => {
   try {
     const docRef = doc(db, 'users', userId);
-    await updateDoc(docRef, { completedPhases });
+    await setDoc(docRef, { completedPhases }, { merge: true });
   } catch (error) {
     console.error("Error saving timeline progress:", error);
   }
 };
 
-export const saveDocumentProgress = async (userId, hasDobProof, hasAddressProof, hasPhoto) => {
+export const saveDocumentProgress = async (userId, hasDobProof, hasAddressProof, hasPhoto, hasIdentity) => {
   try {
     const docRef = doc(db, 'users', userId);
-    await updateDoc(docRef, { 
+    await setDoc(docRef, { 
       'documents.dob': hasDobProof,
       'documents.address': hasAddressProof,
-      'documents.photo': hasPhoto
-    });
+      'documents.photo': hasPhoto,
+      'documents.identity': hasIdentity
+    }, { merge: true });
   } catch (error) {
     console.error("Error saving document progress:", error);
   }
