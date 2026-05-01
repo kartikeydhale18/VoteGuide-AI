@@ -91,6 +91,7 @@ const DocumentRequirements = () => {
             <li>{t('docs.addr2')}</li>
             <li>{t('docs.addr3')}</li>
             <li>{t('docs.addr4')}</li>
+            <li>{t('docs.addr5')}</li>
           </ul>
         </div>
 
