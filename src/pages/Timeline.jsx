@@ -27,14 +27,18 @@ const Timeline = () => {
   }, []);
 
   const togglePhase = (phaseNumber) => {
-    setCompletedPhases(prev => {
-      const newPhases = prev.includes(phaseNumber) 
-        ? prev.filter(p => p !== phaseNumber)
-        : [...prev, phaseNumber];
-      
-      if (user) saveTimelineProgress(user.uid, newPhases);
-      return newPhases;
-    });
+    if (!user) {
+      alert("Please sign in to save your progress!");
+      return;
+    }
+
+    const isComplete = completedPhases.includes(phaseNumber);
+    const newPhases = isComplete 
+      ? completedPhases.filter(p => p !== phaseNumber)
+      : [...completedPhases, phaseNumber];
+    
+    setCompletedPhases(newPhases);
+    saveTimelineProgress(user.uid, newPhases);
   };
 
   const phases = [
