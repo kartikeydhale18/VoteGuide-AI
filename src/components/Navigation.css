@@ -12,6 +12,15 @@
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo img {
+  height: 40px;
+  filter: var(--logo-filter);
+  transition: filter 0.3s ease;
 }
 
 .logo span {
@@ -41,8 +50,8 @@
 }
 
 .language-switcher select {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  background: var(--glass-bg);
+  color: var(--text-primary);
   border: 1px solid var(--glass-border);
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -53,5 +62,21 @@
 
 .language-switcher select option {
   background: var(--bg-color);
-  color: white;
+  color: var(--text-primary);
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
 }

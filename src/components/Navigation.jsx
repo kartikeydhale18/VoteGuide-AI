@@ -8,6 +8,16 @@ import './Navigation.css';
 const Navigation = () => {
   const { t, i18n } = useTranslation();
   const [user, setUser] = useState(null);
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -34,13 +44,19 @@ const Navigation = () => {
 
   return (
     <header className="header glassmorphism">
-      <div className="logo">VoteGuide <span>AI</span></div>
+      <div className="logo">
+        <img src="/voteguide.png" alt="VoteGuide Logo" />
+        <div>VoteGuide <span>AI</span></div>
+      </div>
       <nav className="nav-links">
         <NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''}>{t('nav.home')}</NavLink>
         <NavLink to="/timeline" className={({ isActive }) => isActive ? 'active' : ''}>{t('nav.timeline')}</NavLink>
         <NavLink to="/documents" className={({ isActive }) => isActive ? 'active' : ''}>{t('nav.documents')}</NavLink>
       </nav>
       <div className="nav-controls" style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
+        <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme">
+          {theme === 'dark' ? '☀️' : '🌙'}
+        </button>
         <div className="language-switcher">
           <select aria-label="Select Language" onChange={changeLanguage} value={i18n.language}>
             <option value="en">English</option>
@@ -51,7 +67,7 @@ const Navigation = () => {
         {user ? (
           <div className="user-profile" style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
             <img src={user.photoURL || 'https://www.gravatar.com/avatar/?d=mp'} referrerPolicy="no-referrer" alt="Profile" style={{width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover'}} />
-            <button onClick={handleLogout} style={{background: 'transparent', border: '1px solid var(--glass-border)', color: 'white', padding: '0.25rem 0.5rem', borderRadius: '4px', cursor: 'pointer'}}>Log Out</button>
+            <button onClick={handleLogout} style={{background: 'transparent', border: '1px solid var(--glass-border)', color: 'var(--text-primary)', padding: '0.25rem 0.5rem', borderRadius: '4px', cursor: 'pointer'}}>Log Out</button>
           </div>
         ) : (
           <button onClick={handleLogin} style={{background: 'var(--accent-color)', border: 'none', color: 'white', padding: '0.5rem 1rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold'}}>Sign In</button>
