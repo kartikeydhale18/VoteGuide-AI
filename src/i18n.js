@@ -10,9 +10,9 @@ const resources = {
         documents: "Documents"
       },
       home: {
-        title: "Demystify the Indian Electoral Process",
-        subtitle: "Your ultimate guide to voting rights, timelines, and documentation.",
-        startBtn: "Start Your Journey",
+        title: "Your Simple Guide to Indian Elections",
+        subtitle: "Everything you need to know about voting, important dates, and required documents.",
+        startBtn: "Get Started",
         card1: { title: "Know Your Eligibility", desc: "Learn exactly who can vote and the qualifying dates for registration." },
         card2: { title: "Form 6 & 8 Mastery", desc: "Navigate the complex documentation required for new voters and corrections." },
         card3: { title: "Accessibility Rights", desc: "Understand the provisions under the RPWD Act for assisted voting." }
@@ -89,9 +89,9 @@ const resources = {
         documents: "दस्तावेज़"
       },
       home: {
-        title: "भारतीय चुनाव प्रक्रिया को समझें",
-        subtitle: "मतदान अधिकार, समयरेखा और दस्तावेज़ीकरण के लिए आपकी अंतिम मार्गदर्शिका।",
-        startBtn: "अपनी यात्रा शुरू करें",
+        title: "भारतीय चुनाव को आसानी से समझें",
+        subtitle: "मतदान, महत्वपूर्ण तिथियों और आवश्यक दस्तावेजों के बारे में सब कुछ जो आपको जानना चाहिए।",
+        startBtn: "शुरू करें",
         card1: { title: "अपनी पात्रता जानें", desc: "जानें कि कौन वोट दे सकता है और पंजीकरण के लिए योग्यता तिथियां क्या हैं।" },
         card2: { title: "फॉर्म 6 और 8 की जानकारी", desc: "नए मतदाताओं और सुधार के लिए आवश्यक जटिल दस्तावेज़ीकरण को समझें।" },
         card3: { title: "पहुंच अधिकार", desc: "सहायता प्राप्त मतदान के लिए RPWD अधिनियम के तहत प्रावधानों को समझें।" }
@@ -168,9 +168,9 @@ const resources = {
         documents: "कागदपत्रे"
       },
       home: {
-        title: "भारतीय निवडणूक प्रक्रिया समजून घ्या",
-        subtitle: "मतदानाचा हक्क, वेळापत्रक आणि कागदपत्रांसाठी आपले अंतिम मार्गदर्शक.",
-        startBtn: "आपला प्रवास सुरू करा",
+        title: "भारतीय निवडणुका सोप्या भाषेत समजून घ्या",
+        subtitle: "मतदान, महत्त्वाच्या तारखा आणि आवश्यक कागदपत्रांबद्दल तुम्हाला जे काही माहित असणे आवश्यक आहे.",
+        startBtn: "सुरू करा",
         card1: { title: "तुमची पात्रता जाणून घ्या", desc: "कोण मतदान करू शकते आणि नोंदणीसाठी पात्र तारखा काय आहेत हे जाणून घ्या." },
         card2: { title: "फॉर्म 6 आणि 8 ची माहिती", desc: "नवीन मतदारांसाठी आणि दुरुस्तीसाठी आवश्यक कागदपत्रे समजून घ्या." },
         card3: { title: "प्रवेशाचे अधिकार", desc: "सहाय्यक मतदानासाठी RPWD कायद्यांतर्गत तरतुदी समजून घ्या." }
