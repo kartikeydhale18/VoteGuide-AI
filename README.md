@@ -45,16 +45,16 @@ VoteGuide AI is a dynamic, multilingual, and highly accessible web platform buil
    npm run dev
    ```
 
-## 🐳 Docker Deployment (Cloud Run)
+## 🌐 Deployment (Firebase Hosting)
 
-This application is fully containerized with a custom Nginx configuration to support React Router client-side routing.
+This application is deployed using Firebase Hosting, ensuring fast, secure, and free global content delivery.
 
 ```bash
-# Build the Docker image
-docker build -t voteguide-ai .
+# Build the production application
+npm run build
 
-# Run locally to test the production build
-docker run -p 8080:80 voteguide-ai
+# Deploy to Firebase Hosting
+npx firebase deploy --only hosting
 ```
 
 ## 🏆 Hackathon Submission Details
