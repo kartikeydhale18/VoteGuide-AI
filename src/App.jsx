@@ -7,6 +7,7 @@ const Timeline = lazy(() => import('./pages/Timeline'))
 const DocumentRequirements = lazy(() => import('./pages/DocumentRequirements'))
 const Eligibility = lazy(() => import('./pages/Eligibility'))
 const Accessibility = lazy(() => import('./pages/Accessibility'))
+const AIAssistant = lazy(() => import('./components/AIAssistant'))
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="accessibility" element={<Accessibility />} />
         </Route>
       </Routes>
+      <AIAssistant />
     </Suspense>
   )
 }

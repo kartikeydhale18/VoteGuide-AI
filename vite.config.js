@@ -13,5 +13,5 @@ export default defineConfig({
       include: ['src/**/*.{js,jsx}'],
       exclude: ['src/**/*.test.{js,jsx}', 'src/main.jsx', 'src/firebase.js']
     }
-  },
+  }
 })
