@@ -5,7 +5,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 
 describe('App', () => {
-  it('renders without crashing', () => {
+  it('renders without crashing', async () => {
     render(
       <HelmetProvider>
         <BrowserRouter>
@@ -13,6 +13,7 @@ describe('App', () => {
         </BrowserRouter>
       </HelmetProvider>
     );
-    expect(screen.getAllByText(/VoteGuide/i).length).toBeGreaterThan(0);
+    const elements = await screen.findAllByText(/VoteGuide/i);
+    expect(elements.length).toBeGreaterThan(0);
   });
 });

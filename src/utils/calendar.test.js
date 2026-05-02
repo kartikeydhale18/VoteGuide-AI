@@ -3,7 +3,7 @@ import { addEventToCalendar } from './calendar';
 
 describe('Calendar Utilities', () => {
   it('addEventToCalendar calls fetch with correct parameters', async () => {
-    global.fetch = vi.fn().mockResolvedValue({
+    window.fetch = vi.fn().mockResolvedValue({
       ok: true,
       json: () => Promise.resolve({ id: '123' })
     });

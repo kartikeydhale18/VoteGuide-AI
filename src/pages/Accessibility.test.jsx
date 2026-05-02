@@ -22,7 +22,7 @@ describe('Accessibility Component', () => {
   });
 
   it('triggers speech synthesis when read aloud is clicked', () => {
-    global.alert = vi.fn();
+    window.alert = vi.fn();
     const speakMock = vi.fn();
     window.speechSynthesis = {
       speak: speakMock,
@@ -31,7 +31,7 @@ describe('Accessibility Component', () => {
     };
     
     // Mock SpeechSynthesisUtterance
-    global.SpeechSynthesisUtterance = class {
+    window.SpeechSynthesisUtterance = class {
       constructor(text) {
         this.text = text;
       }

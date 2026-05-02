@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
 import { auth, googleProvider } from '../firebase';
@@ -26,7 +26,7 @@ const Timeline = () => {
     return () => unsubscribe();
   }, []);
 
-  const togglePhase = (phaseNumber) => {
+  const togglePhase = useCallback((phaseNumber) => {
     if (!user) {
       alert("Please sign in to save your progress!");
       return;
@@ -39,7 +39,7 @@ const Timeline = () => {
     
     setCompletedPhases(newPhases);
     saveTimelineProgress(user.uid, newPhases);
-  };
+  }, [user, completedPhases]);
 
   const phases = [
     { id: 1, title: t('time.p1Title'), desc: t('time.p1Desc'), startDate: '2026-05-01T09:00:00+05:30', endDate: '2026-05-01T17:00:00+05:30' },
@@ -54,7 +54,7 @@ const Timeline = () => {
   const totalPhases = phases.length;
   const progressPercent = Math.round((completedPhases.length / totalPhases) * 100);
 
-  const handleAddToCalendar = async (phase) => {
+  const handleAddToCalendar = useCallback(async (phase) => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -74,7 +74,7 @@ const Timeline = () => {
       alert("Failed to add to calendar. Check console for details.");
       alert(t('time.errorAlert'));
     }
-  };
+  }, [t]);
 
   return (
     <div className="page fade-in">

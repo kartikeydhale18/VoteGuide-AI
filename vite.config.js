@@ -8,5 +8,10 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './vitest.setup.js',
+    coverage: {
+      provider: 'v8',
+      include: ['src/**/*.{js,jsx}'],
+      exclude: ['src/**/*.test.{js,jsx}', 'src/main.jsx', 'src/firebase.js']
+    }
   },
 })

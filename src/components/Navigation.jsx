@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth, googleProvider } from '../firebase';
 import './Navigation.css';
@@ -15,9 +15,9 @@ const Navigation = () => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark');
-  };
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -26,21 +26,21 @@ const Navigation = () => {
     return () => unsubscribe();
   }, []);
 
-  const handleLogin = async () => {
+  const handleLogin = useCallback(async () => {
     try {
       await signInWithPopup(auth, googleProvider);
     } catch (error) {
       console.error("Login failed", error);
     }
-  };
+  }, []);
 
-  const handleLogout = async () => {
+  const handleLogout = useCallback(async () => {
     await signOut(auth);
-  };
+  }, []);
 
-  const changeLanguage = (e) => {
+  const changeLanguage = useCallback((e) => {
     i18n.changeLanguage(e.target.value);
-  };
+  }, [i18n]);
 
   return (
     <header className="header glassmorphism">
